@@ -30,13 +30,14 @@ namespace AS_Automator.Task
             Program = Environment.ExpandEnvironmentVariables(Program);
             WorkingDirectory = Environment.ExpandEnvironmentVariables(WorkingDirectory);
             var p = new FileInfo(Program);
-            Console.Write($"Run as.{p.Name.Replace(".exe", ".kapak").Replace("\\", "-").ToLower()} ... ");
+            Console.Write($"Run {p.Name.Replace(".exe", ".app").Replace("\\", "-").ToLower()} ... ");
 
             Process process = new Process();
             process.StartInfo.WorkingDirectory = WorkingDirectory;
             process.StartInfo.FileName = Program;
             process.StartInfo.Arguments = Arguments;
             process.StartInfo.Verb = "runas";
+      
             process.StartInfo.UseShellExecute = true;
             process.Start();
             process.WaitForExit();

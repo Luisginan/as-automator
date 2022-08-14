@@ -13,7 +13,7 @@ namespace AS_Automator.Task
         public override AsTask GetSample()
         {
             var list = new List<FileDelete>();
-            list.Add(new FileDelete { FilePath = @"C:\a.txt", CheckFile = true });
+            list.Add(new FileDelete { FilePath = @"@(apppath)\a.dll", CheckFile = true });
 
             return new TaskDeleteListFile() { ListFileDelete = list };
         }
@@ -21,7 +21,7 @@ namespace AS_Automator.Task
         public override void Run(List<Variable> variableList)
         {
             var fileMaker = new NgFileMaker();
-            
+
             Console.Write($@"Safe {ListFileDelete.Count} File ... ");
             foreach (var file in ListFileDelete)
             {
@@ -41,7 +41,7 @@ namespace AS_Automator.Task
                     try
                     {
                         Thread.Sleep(10000);
-                        fileMaker.DeleteFile(fileInfo, file.CheckFile);
+                        NgFileMaker.DeleteFile(fileInfo, file.CheckFile);
                         break;
                     }
                     catch (Exception ex)
@@ -55,7 +55,7 @@ namespace AS_Automator.Task
                     }
                 }
 
-               
+
             }
             Console.WriteLine("Done");
         }

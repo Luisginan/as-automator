@@ -13,7 +13,7 @@ namespace AS_Automator.Task
         public override AsTask GetSample()
         {
             var list = new List<FolderDelete>();
-            list.Add(new FolderDelete { FolderPath = @"C:\a.txt", CheckFile = true });
+            list.Add(new FolderDelete { FolderPath = @"@(apppath)\folder", CheckFile = true });
 
             return new TaskDeleteListFolder() { ListFolderDelete = list };
         }
@@ -55,7 +55,7 @@ namespace AS_Automator.Task
                     }
                 }
 
-                
+
             }
             Console.WriteLine("Done");
         }

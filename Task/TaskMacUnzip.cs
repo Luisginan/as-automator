@@ -16,7 +16,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskExtractZip { FilePath = "x.asx", ExtractFolder = $@"/users/shared/as" };
+            return new TaskMacUnzip { FilePath = "x.asx", ExtractFolder = $@"@(temp)" };
         }
 
         public override void Run(List<Variable> variableList)

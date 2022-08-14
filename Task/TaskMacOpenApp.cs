@@ -19,7 +19,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskMacOpenApp { FilePath = "a.pkg", Wait = true, AsFile = true, WorkingDirectory = "" };
+            return new TaskMacOpenApp { FilePath = "a.pkg", Wait = true, AsFile = true, WorkingDirectory = "@(tempx)" };
         }
 
         public override void Run(List<Variable> variableList)

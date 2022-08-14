@@ -13,7 +13,7 @@ namespace AS_Automator.Task
         public override AsTask GetSample()
         {
             var list = new List<CopyFolder>();
-            list.Add(new CopyFolder { FolderInfoSource = "dir", FolderInfoDestination = @"@(apppath)\dir" });
+            list.Add(new CopyFolder { FolderInfoSource = @"@(tempx)\dir", FolderInfoDestination = @"@(apppath)\dir" });
             return new TaskCopyListFolder { ListCopyFolder = list };
         }
 

@@ -17,7 +17,7 @@ namespace AS_Automator.Task
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($@"Importing {ListFilePath.Count} Regedit ... ");
+            Console.Write($@"Importing {ListFilePath.Count} Registration Key ... ");
             var list = new List<String>();
 
             foreach (var file in ListFilePath)
@@ -38,6 +38,7 @@ namespace AS_Automator.Task
                 process.StartInfo.FileName = "reg"; ;
                 process.StartInfo.Arguments = $@"import ""{f}""";
                 process.StartInfo.Verb = "runas";
+                process.StartInfo.RedirectStandardOutput = true;
                 process.Start();
                 process.WaitForExit();
             }

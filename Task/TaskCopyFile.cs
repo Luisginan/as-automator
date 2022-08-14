@@ -13,12 +13,12 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskCopyFile { FileInfoSource = @"aa.ap", FileInfoDestination = @"@(apppath)\rim.exe" };
+            return new TaskCopyFile { FileInfoSource = @"@(tempx)/aa.ap", FileInfoDestination = @"@(apppath)/rim.exe" };
         }
 
         public override void Run(List<Variable> variablesList)
         {
-           
+
             foreach (var variable in variablesList)
             {
                 FileInfoSource = FileInfoSource.Replace("@(" + variable.Name + ")", variable.Value);

@@ -41,7 +41,7 @@ namespace AS_Automator.Task
                 try
                 {
                     Thread.Sleep(10000);
-                    new NgFileMaker().DeleteFile(new System.IO.FileInfo(FilePath), true);
+                    NgFileMaker.DeleteFile(new System.IO.FileInfo(FilePath), true);
                     break;
                 }
                 catch (Exception ex)

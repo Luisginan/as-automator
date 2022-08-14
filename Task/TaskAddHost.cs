@@ -29,9 +29,9 @@ namespace AS_Automator.Task
                 path = "/etc/hosts";
             }
 
-            fileMaker.SetAttributeFile(new FileInfo(path), FileAttributes.Normal);
+            NgFileMaker.SetAttributeFile(new FileInfo(path), FileAttributes.Normal);
 
-            var hostText = fileMaker.ReadFromFile(path);
+            var hostText = NgFileMaker.ReadFromFile(path);
             var hostLine = hostText.Split(Environment.NewLine);
 
             var validHost = new List<String>();
@@ -67,8 +67,8 @@ namespace AS_Automator.Task
                 newHost.AppendLine($"127.0.0.1 {h}");
             }
 
-            fileMaker.WriteToFile(path, newHost.ToString());
-            fileMaker.SetAttributeFile(new FileInfo(path), FileAttributes.ReadOnly);
+            NgFileMaker.WriteToFile(path, newHost.ToString());
+            NgFileMaker.SetAttributeFile(new FileInfo(path), FileAttributes.ReadOnly);
 
             Console.WriteLine("Done");
 

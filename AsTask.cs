@@ -2,7 +2,6 @@
 using AS_Automator.Task;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace AS_Automator
@@ -32,6 +31,9 @@ namespace AS_Automator
     [XmlInclude(typeof(TaskDeleteListFolder))]
     [XmlInclude(typeof(TaskCopyListFolder))]
     [XmlInclude(typeof(TaskExludeFromWinDefender))]
+    [XmlInclude(typeof(TaskMacWifi))]
+    [XmlInclude(typeof(TaskMacGatekeeper))]
+    [XmlInclude(typeof(TaskBlockFirewallList))]
     [Serializable]
     public abstract class AsTask
     {

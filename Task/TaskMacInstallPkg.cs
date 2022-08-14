@@ -17,7 +17,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskMacInstallPkg { FilePath = "a.pkg", WorkingDirectory = "" };
+            return new TaskMacInstallPkg { FilePath = "a.pkg", WorkingDirectory = "@(tempx)" };
         }
 
         public override void Run(List<Variable> variableList)

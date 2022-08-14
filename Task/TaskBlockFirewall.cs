@@ -23,7 +23,7 @@ namespace AS_Automator.Task
             }
 
             var fileInfo = new FileInfo(FilePath);
-            Console.Write($"Set Firewall for {fileInfo.Name} ... ");
+            Console.Write($"Configuring Security for {fileInfo.Name} ... ");
 
             Process process = new Process();
             process.StartInfo.FileName = "netsh"; ;

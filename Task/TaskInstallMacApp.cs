@@ -17,7 +17,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskInstallMacApp { AppName = $@"Wondershare\ Filmora.app", FileName = "x.as", WorkingDirectory = "" };
+            return new TaskInstallMacApp { AppName = $@"Any App.app", FileName = "x.as", WorkingDirectory = "@(temp)" };
         }
 
         public override void Run(List<Variable> variableList)
