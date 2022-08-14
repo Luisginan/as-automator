@@ -7,11 +7,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
+    <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AS-Utility\AS-Utility.csproj" />
+    <ProjectReference Include="as-utility\AS-Utility.csproj" />
   </ItemGroup>
-
 </Project>
