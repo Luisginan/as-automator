@@ -2,16 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>AS_Automator</RootNamespace>
+    <RootNamespace>AS_AUTOMATOR</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>portable</DebugType>
-    <WarningLevel>4</WarningLevel>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="as-utility\**" />
+    <EmbeddedResource Remove="as-utility\**" />
+    <None Remove="as-utility\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="as-utility\AS-Utility.csproj" />
   </ItemGroup>
+
 </Project>
