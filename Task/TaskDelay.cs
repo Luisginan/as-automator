@@ -11,12 +11,15 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskDelay { Interval = 1000 };
+            return new TaskDelay { Interval = 1000, Title = "" };
         }
 
         public override void Run(List<Variable> variablesList)
         {
-            Console.WriteLine("Wait for " + Interval);
+            if (Title == "")
+                Title = "Wait for " + Interval;
+
+            Console.Write(Title);
             Thread.Sleep(Interval);
         }
     }

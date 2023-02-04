@@ -14,12 +14,15 @@ namespace AS_Automator.Task
         {
             var list = new List<String>();
             list.Add("Hello");
-            return new TaskShowText { ListText = list };
+            return new TaskShowText { ListText = list, Title ="" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.WriteLine("Catatan : ");
+            if (Title == "")
+                Title = "Catatan : ";
+
+            Console.WriteLine(Title);
             foreach (var text in ListText)
             {
                 var text2 = "";

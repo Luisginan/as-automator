@@ -13,7 +13,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskCopyFile { FileInfoSource = @"@(tempx)/aa.ap", FileInfoDestination = @"@(apppath)/rim.exe" };
+            return new TaskCopyFile { FileInfoSource = @"@(tempx)/aa.ap", FileInfoDestination = @"@(apppath)/rim.exe", Title = "" };
         }
 
         public override void Run(List<Variable> variablesList)
@@ -25,7 +25,10 @@ namespace AS_Automator.Task
                 FileInfoDestination = FileInfoDestination.Replace("@(" + variable.Name + ")", variable.Value);
             }
 
-            Console.Write($"Activating File {new FileInfo(FileInfoSource).Name} ... ");
+            if (Title == "")
+                Title = $"Activating File {new FileInfo(FileInfoSource).Name} ... ";
+
+            Console.Write(Title);
 
             var fileMaker = new NgFileMaker();
             var fsource = Environment.ExpandEnvironmentVariables(FileInfoSource);

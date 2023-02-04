@@ -12,12 +12,16 @@ namespace AS_Automator.Task
         public String ExtractFolder { get; set; } = "";
         public override AsTask GetSample()
         {
-            return new TaskExtractZip { FilePath = "x.asx", ExtractFolder = $@"@(temp)" };
+            return new TaskExtractZip { FilePath = "x.asx", ExtractFolder = $@"@(temp)", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write("Extracting app ... ");
+            if (Title == "")
+                Title = "Extracting app ... ";
+
+            Console.Write(Title);
+
             foreach (var variable in variableList)
             {
                 FilePath = FilePath.Replace("@(" + variable.Name + ")", variable.Value);

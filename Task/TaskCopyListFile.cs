@@ -12,16 +12,22 @@ namespace AS_Automator.Task
         public List<TaskCopyFile> ListFileCopy { get; set; }
         public override AsTask GetSample()
         {
-            var list = new List<TaskCopyFile>();
-            list.Add(new TaskCopyFile { FileInfoSource = "aa.ap", FileInfoDestination = @"@(apppath)\rim.exe" });
-            return new TaskCopyListFile { ListFileCopy = list };
+            var list = new List<TaskCopyFile>
+            {
+                new TaskCopyFile { FileInfoSource = @"@(tempx)\aa.ap", FileInfoDestination = @"@(apppath)\rim.exe" }
+            };
+            return new TaskCopyListFile { ListFileCopy = list, Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
             var fileMaker = new NgFileMaker();
 
-            Console.Write($@"Activating {ListFileCopy.Count} File ... ");
+            if (Title == "")
+                Title = $@"Activating {ListFileCopy.Count} File ... ";
+
+            Console.Write(Title);
+
             foreach (var file in ListFileCopy)
             {
                 var FileInfoSource = file.FileInfoSource;

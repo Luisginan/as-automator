@@ -17,7 +17,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskInstallMacApp { AppName = $@"Any App.app", FileName = "x.as", WorkingDirectory = "@(temp)" };
+            return new TaskInstallMacApp { AppName = $@"Any App.app", FileName = "x.as", WorkingDirectory = "@(temp)", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
@@ -25,7 +25,12 @@ namespace AS_Automator.Task
             var fileMaker = new NgFileMaker();
 
             var app = AppName.Replace(@"\", @"").Replace(@".app", @"");
-            Console.Write($@"Install app {app} ... ");
+
+            if (Title == "")
+                Title = $@"Install app {app} ... ";
+
+            Console.Write(Title);
+
 
             foreach (var variable in variableList)
             {

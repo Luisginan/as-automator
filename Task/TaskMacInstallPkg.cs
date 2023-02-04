@@ -17,7 +17,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskMacInstallPkg { FilePath = "a.pkg", WorkingDirectory = "@(tempx)" };
+            return new TaskMacInstallPkg { FilePath = "a.pkg", WorkingDirectory = "@(tempx)", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
@@ -31,8 +31,11 @@ namespace AS_Automator.Task
             FilePath = Environment.ExpandEnvironmentVariables(FilePath);
             WorkingDirectory = Environment.ExpandEnvironmentVariables(WorkingDirectory);
 
-            Console.Write($"Installing Package {new FileInfo(FilePath).Name.Replace(".pkg", "")} ... ");
+            if (Title == "")
+                Title = $"Installing Package {new FileInfo(FilePath).Name.Replace(".pkg", "")} ... ";
 
+            Console.Write(Title);
+           
             Process process = new Process();
             process.StartInfo.WorkingDirectory = WorkingDirectory;
             process.StartInfo.RedirectStandardOutput = true;

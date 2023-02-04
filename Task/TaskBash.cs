@@ -16,12 +16,15 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskBash { Command = "ls", Arguments = "-a" };
+            return new TaskBash { Command = "ls", Arguments = "-a", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($@"run bash {Command} ... ");
+            if (Title == "")
+                Title = $@"run bash {Command} ... ";
+
+            Console.WriteLine(Title);
 
             foreach (var variable in variableList)
             {

@@ -14,7 +14,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskRunProgram { Program = "setup.exe", Arguments = "/silent", WorkingDirectory = @"@(tempx)" };
+            return new TaskRunProgram { Program = "setup.exe", Arguments = "/silent", WorkingDirectory = @"@(tempx)", Title = "" };
         }
 
         public override void Run(List<Variable> variablesList)
@@ -30,7 +30,11 @@ namespace AS_Automator.Task
             Program = Environment.ExpandEnvironmentVariables(Program);
             WorkingDirectory = Environment.ExpandEnvironmentVariables(WorkingDirectory);
             var p = new FileInfo(Program);
-            Console.Write($"Run {p.Name.Replace(".exe", ".app").Replace("\\", "-").ToLower()} ... ");
+
+            if (Title == "")
+                Title = $"Run {p.Name.Replace(".exe", ".app").Replace("\\", "-").ToLower()} ... ";
+
+            Console.Write(Title);
 
             Process process = new Process();
             process.StartInfo.WorkingDirectory = WorkingDirectory;

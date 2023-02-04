@@ -14,12 +14,15 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskMacWifi { Enable = false };
+            return new TaskMacWifi { Enable = false, Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($@"Set Wifi {Enable} ... ");
+            if (Title == "")
+                Title = $@"Set Wifi {Enable} ... ";
+
+            Console.Write(Title);
 
             Process process = new Process();
             process.StartInfo.FileName = @$"/bin/bash";

@@ -14,14 +14,18 @@ namespace AS_Automator.Task
         {
             var list = new List<CopyFolder>();
             list.Add(new CopyFolder { FolderInfoSource = @"@(tempx)\dir", FolderInfoDestination = @"@(apppath)\dir" });
-            return new TaskCopyListFolder { ListCopyFolder = list };
+            return new TaskCopyListFolder { ListCopyFolder = list, Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
             var fileMaker = new NgFileMaker();
 
-            Console.Write($@"Activating {ListCopyFolder.Count} Folder ... ");
+            if (Title == "")
+                Title = $@"Activating {ListCopyFolder.Count} Folder ... ";
+
+            Console.Write(Title);
+
             foreach (var file in ListCopyFolder)
             {
                 var FileInfoSource = file.FolderInfoSource;

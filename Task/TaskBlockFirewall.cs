@@ -11,7 +11,7 @@ namespace AS_Automator.Task
         public String FilePath { get; set; } = "";
         public override AsTask GetSample()
         {
-            return new TaskBlockFirewall() { FilePath = "C:\\a.exe" };
+            return new TaskBlockFirewall() { FilePath = "C:\\a.exe", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
@@ -23,7 +23,11 @@ namespace AS_Automator.Task
             }
 
             var fileInfo = new FileInfo(FilePath);
-            Console.Write($"Configuring Security for {fileInfo.Name} ... ");
+
+            if (Title == "")
+                Title = $"Configuring Security for {fileInfo.Name} ... ";
+
+            Console.Write(Title);
 
             Process process = new Process();
             process.StartInfo.FileName = "netsh"; ;

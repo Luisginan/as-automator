@@ -12,12 +12,16 @@ namespace AS_Automator.Task
         {
             var list = new List<String>();
             list.Add($@"reg.reg");
-            return  new TaskRegeditImport() { ListFilePath = list };
+            return  new TaskRegeditImport() { ListFilePath = list, Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($@"Importing {ListFilePath.Count} Registration Key ... ");
+            if (Title == "")
+                Title = $@"Importing {ListFilePath.Count} Registration Key ... ";
+
+            Console.Write(Title);
+
             var list = new List<String>();
 
             foreach (var file in ListFilePath)

@@ -14,12 +14,15 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskMacGatekeeper { Enable = false};
+            return new TaskMacGatekeeper { Enable = false, Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($@"Set Spctl {Enable} ... ");
+            if (Title == "")
+                Title = $@"Set Spctl {Enable} ... ";
+
+            Console.Write(Title);
 
             Process process = new Process();
             process.StartInfo.FileName = @$"/bin/bash";

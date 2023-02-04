@@ -43,6 +43,8 @@ namespace AS_Automator
 
         public Boolean Disable { get; set; } = false;
 
+        public String Title { get; set; } = "";
+
         protected void ShowInfo(string msg)
         {
             Console.ResetColor();

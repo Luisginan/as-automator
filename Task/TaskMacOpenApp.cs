@@ -19,7 +19,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskMacOpenApp { FilePath = "a.pkg", Wait = true, AsFile = true, WorkingDirectory = "@(tempx)" };
+            return new TaskMacOpenApp { FilePath = "a.pkg", Wait = true, AsFile = true, WorkingDirectory = "@(tempx)", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
@@ -34,7 +34,10 @@ namespace AS_Automator.Task
             FilePath = Environment.ExpandEnvironmentVariables(FilePath);
             WorkingDirectory = Environment.ExpandEnvironmentVariables(WorkingDirectory);
 
-            Console.Write($"Open app {new FileInfo(FilePath).Name} ... ");
+            if (Title == "")
+                Title = $"Open app {new FileInfo(FilePath).Name} ... ";
+
+            Console.Write(Title);
 
 
             var newName = FilePath;

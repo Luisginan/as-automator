@@ -13,12 +13,16 @@ namespace AS_Automator.Task
         public String FilePath { get; set; } = "";
         public override AsTask GetSample()
         {
-            return new TaskDeleteService() { ServiceName = "notepad", FilePath = "C:\\notepad" };
+            return new TaskDeleteService() { ServiceName = "notepad", FilePath = "C:\\notepad", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($@"Safe Service {ServiceName} ... ");
+            if (Title == "")
+                Title = $@"Safe Service {ServiceName} ... ";
+
+            Console.Write(Title);
+           
             foreach (var variable in variableList)
             {
                 ServiceName = ServiceName.Replace("@(" + variable.Name + ")", variable.Value);

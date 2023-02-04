@@ -13,14 +13,19 @@ namespace AS_Automator.Task
         public List<String> ListHost { get; set; }
         public override AsTask GetSample()
         {
-            List<String> listHost = new List<string>();
-            listHost.Add("e834.g.akamaiedge.net");
-            return new TaskAddHost { ListHost = listHost };
+            List<String> listHost = new List<string>
+            {
+                "e834.g.akamaiedge.net"
+            };
+            return new TaskAddHost { ListHost = listHost, Title ="" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($"Lockdown {ListHost.Count} host ... ");
+            if (Title == "")
+                Title = $"Lockdown {ListHost.Count} host ... ";
+            
+            Console.Write(Title);
             var fileMaker = new NgFileMaker();
 
             var path = Environment.ExpandEnvironmentVariables($@"%WINDIR%\system32\drivers\etc\hosts");

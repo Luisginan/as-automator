@@ -13,7 +13,7 @@ namespace AS_Automator.Task
         public String WorkingDirectory { get; set; } = "";
         public override AsTask GetSample()
         {
-            return new TaskRunMsi() { FilePath = @"@(tempx)\run.msi" };
+            return new TaskRunMsi() { FilePath = @"@(tempx)\run.msi", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
@@ -28,7 +28,11 @@ namespace AS_Automator.Task
             WorkingDirectory = Environment.ExpandEnvironmentVariables(WorkingDirectory);
 
             var fileInfo = new FileInfo(FilePath);
-            Console.Write($"Installing as.{fileInfo.Name.Replace(".msi", ".masa").ToLower()} ...");
+
+            if (Title == "")
+                Title = $"Installing as.{fileInfo.Name.Replace(".msi", ".masa").ToLower()} ...";
+
+            Console.Write(Title);
 
             Process process = new Process();
             process.StartInfo.WorkingDirectory = WorkingDirectory;

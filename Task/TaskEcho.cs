@@ -12,7 +12,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskEcho { Message = "Enjoy!" };
+            return new TaskEcho { Message = "Enjoy!", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
@@ -21,6 +21,7 @@ namespace AS_Automator.Task
             {
                 Message = Message.Replace("@(" + variable.Name + ")", variable.Value);
             }
+
 
             Console.WriteLine(Message);
             Console.ResetColor();

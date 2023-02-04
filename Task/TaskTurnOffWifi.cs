@@ -14,7 +14,11 @@ namespace AS_Automator.Task
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write("Making network silent ...");
+            if (Title == "")
+                Title = "Making network silent ...";
+
+            Console.Write(Title);
+
             Process process = new Process();
             process.StartInfo.FileName = "netsh";
             process.StartInfo.Arguments = "wlan disconnect";

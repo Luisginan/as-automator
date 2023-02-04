@@ -12,12 +12,16 @@ namespace AS_Automator.Task
         {
             var list = new List<String>();
             list.Add($@"%temp$\as\x");
-            return new TaskExludeFromWinDefender() { ListFolderPath = list };
+            return new TaskExludeFromWinDefender() { ListFolderPath = list, Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($@"Making folder resistance {ListFolderPath.Count} ... ");
+            if (Title == "")
+                Title = $@"Making folder resistance {ListFolderPath.Count} ... ";
+
+            Console.Write(Title);
+
             var list = new List<String>();
 
 

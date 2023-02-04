@@ -11,7 +11,7 @@ namespace AS_Automator.Task
 
         public override AsTask GetSample()
         {
-            return new TaskWriteTitle { Text = "Welcome to my Apps" };
+            return new TaskWriteTitle { Text = "Welcome to my Apps", Title = "" };
         }
 
         public override void Run(List<Variable> variablesList)

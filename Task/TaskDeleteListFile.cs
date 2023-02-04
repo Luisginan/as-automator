@@ -15,14 +15,18 @@ namespace AS_Automator.Task
             var list = new List<FileDelete>();
             list.Add(new FileDelete { FilePath = @"@(apppath)\a.dll", CheckFile = true });
 
-            return new TaskDeleteListFile() { ListFileDelete = list };
+            return new TaskDeleteListFile() { ListFileDelete = list, Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
         {
             var fileMaker = new NgFileMaker();
 
-            Console.Write($@"Safe {ListFileDelete.Count} File ... ");
+            if (Title == "")
+                Title = $@"Safe {ListFileDelete.Count} File ... ";
+
+            Console.Write(Title);
+
             foreach (var file in ListFileDelete)
             {
                 var path = file.FilePath;

@@ -10,7 +10,7 @@ namespace AS_Automator.Task
         public String AppName { get; set; } = "";
         public override AsTask GetSample()
         {
-            return new TaskKillApp() { AppName = "notepad" };
+            return new TaskKillApp() { AppName = "notepad", Title = "" };
         }
 
         public override void Run(List<Variable> variableList)
@@ -20,7 +20,11 @@ namespace AS_Automator.Task
                 AppName = AppName.Replace("@(" + variable.Name + ")", variable.Value);
             }
 
-            Console.WriteLine($"Kill App {AppName}");
+            if (Title == "")
+                Title = $"Kill App {AppName}";
+
+            Console.Write(Title);
+
             Process[] proc = Process.GetProcessesByName($"{AppName}");
             if (proc.Length > 0)
                 proc[0].Kill();
