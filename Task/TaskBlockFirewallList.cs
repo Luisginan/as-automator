@@ -15,12 +15,16 @@ namespace AS_Automator.Task
             var list = new TaskBlockFirewallList();
             list.TaskList.Add(new TaskBlockFirewall { FilePath = $@"C:\X.exe" });
             list.TaskList.Add(new TaskBlockFirewall { FilePath = $@"C:\Z.exe" });
+            list.Title = "";
             return list;
         }
 
         public override void Run(List<Variable> variableList)
         {
-            Console.Write($"Configuring Security for {TaskList.Count} Program ... ");
+            if (Title == "")
+                Title = $"Configuring Security for {TaskList.Count} Program ... ";
+
+            Console.Write(Title);
 
             foreach (var task in TaskList)
             {
