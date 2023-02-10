@@ -34,8 +34,8 @@ namespace AS_Automator.Task
             var fsource = Environment.ExpandEnvironmentVariables(FileInfoSource);
             var fdest = Environment.ExpandEnvironmentVariables(FileInfoDestination);
 
-            var from = new System.IO.FileInfo(fsource);
-            var to = new System.IO.FileInfo(fdest);
+            var from = new FileInfo(fsource);
+            var to = new FileInfo(fdest);
 
             fileMaker.CopyFile(from, to);
             Console.WriteLine($"Done");

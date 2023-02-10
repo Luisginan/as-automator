@@ -11,7 +11,7 @@ namespace AS_Automator.Task
         public override AsTask GetSample()
         {
             var list = new List<String>();
-            list.Add($@"%temp$\as\x");
+            list.Add($@"%temp%\as\x");
             return new TaskExludeFromWinDefender() { ListFolderPath = list, Title = "" };
         }
 
@@ -29,9 +29,12 @@ namespace AS_Automator.Task
             {
                 var f = file;
                 foreach (var variable in variableList)
-                {           
-                    f = Environment.ExpandEnvironmentVariables((f.Replace("@(" + variable.Name + ")", variable.Value)));
+                {
+                    f = f.Replace("@(" + variable.Name + ")", variable.Value);
+
                 }
+
+                f = Environment.ExpandEnvironmentVariables(f);
                 list.Add(f);
             }
 
@@ -54,7 +57,7 @@ namespace AS_Automator.Task
             {
                 Console.WriteLine("Failed : " + ex.Message);
             }
-           
+
 
             Console.WriteLine("Done");
         }
