@@ -1,3 +1,4 @@
 [submodule "as-utility2"]
 	path = as-utility
 	url = https://github.com/Luisginan/as-utility.git
+	branch = master
